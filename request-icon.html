@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request a 3D Icon | Free3Dicons</title>
+  <meta name="description" content="Can't find the 3D icon you need? Request it and we'll create it for you.">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="f3d-nav">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between">
+        <a href="/" class="navbar-brand">Free3D<span style="color:var(--accent)">Icons</span></a>
+        <a href="/" class="nav-link">← Back to Browse</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <div style="font-size:3rem;margin-bottom:16px;">💬</div>
+      <h1 class="fw-bold">Request an Icon</h1>
+      <p class="text-muted">Tell us what icon you need and we'll add it to our library.</p>
+    </div>
+
+    <div class="f3d-request-form">
+      <div id="f3dRequestForm">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">What icon do you need?</label>
+          <input type="text" class="form-control" id="f3dRequestText"
+                 placeholder="e.g. Bitcoin wallet, Solar panel, Microscope..."
+                 maxlength="200">
+          <div class="form-text">Be specific — "red sports car" is better than just "car"</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Preferred style <span class="text-muted fw-normal">(optional)</span></label>
+          <select class="form-select" id="f3dRequestStyle">
+            <option value="">Any style</option>
+            <option value="glossy">Glossy</option>
+            <option value="clay">Clay</option>
+            <option value="flat">Flat</option>
+            <option value="minimal">Minimal</option>
+          </select>
+        </div>
+        <div class="mb-4">
+          <label class="form-label fw-semibold">Your email <span class="text-muted fw-normal">(optional — we'll notify you when ready)</span></label>
+          <input type="email" class="form-control" id="f3dRequestEmail" placeholder="you@example.com">
+        </div>
+        <button class="f3d-download-btn" id="f3dSubmitRequest" style="max-width:none;">
+          Submit Request
+        </button>
+      </div>
+      <div id="f3dRequestSuccess" style="display:none;text-align:center;padding:32px 0;">
+        <div style="font-size:3rem;margin-bottom:16px;">✅</div>
+        <h3 class="fw-bold">Request Submitted!</h3>
+        <p class="text-muted">Thanks! We'll review your request and add it to our creation queue.</p>
+        <a href="/" class="btn btn-primary mt-2">Browse Icons</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('f3dSubmitRequest').addEventListener('click', function() {
+      var text = document.getElementById('f3dRequestText').value.trim();
+      if (!text) { alert('Please describe the icon you need.'); return; }
+
+      // Send to WP REST API
+      var apiBase = document.querySelector('meta[name="wp-api"]');
+      if (apiBase) {
+        fetch(apiBase.content + '/f3d/v1/icon-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            request_text: text,
+            style: document.getElementById('f3dRequestStyle').value,
+            email: document.getElementById('f3dRequestEmail').value,
+          })
+        }).catch(function(){});
+      }
+
+      document.getElementById('f3dRequestForm').style.display    = 'none';
+      document.getElementById('f3dRequestSuccess').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
