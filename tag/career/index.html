@@ -1,4 +1,95 @@
-<br />
-<b>Warning</b>:  include(/home/u978186556/domains/cmsadmin.free3dicons.com/public_html/wp-content/plugins/free3dicons-plugin/templates/tag-page.php): Failed to open stream: No such file or directory in <b>/home/u978186556/domains/cmsadmin.free3dicons.com/public_html/wp-content/plugins/free3dicons-plugin/includes/class-github-publisher.php</b> on line <b>374</b><br />
-<br />
-<b>Warning</b>:  include(): Failed opening '/home/u978186556/domains/cmsadmin.free3dicons.com/public_html/wp-content/plugins/free3dicons-plugin/templates/tag-page.php' for inclusion (include_path='.:/opt/alt/php82/usr/share/pear:/opt/alt/php82/usr/share/php:/usr/share/pear:/usr/share/php') in <b>/home/u978186556/domains/cmsadmin.free3dicons.com/public_html/wp-content/plugins/free3dicons-plugin/includes/class-github-publisher.php</b> on line <b>374</b><br />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&quot;career&quot; 3D Icons — Free Download | Free3Dicons</title>
+  <meta name="description" content="Download free 3D icons tagged &quot;career&quot;. All formats, any size.">
+  <link rel="canonical" href="https://free3dicons.com/tag/career/">
+  <meta property="og:title" content="&quot;career&quot; 3D Icons — Free Download | Free3Dicons">
+  <meta property="og:description" content="Download free 3D icons tagged &quot;career&quot;. All formats, any size.">
+  <meta property="og:url" content="https://free3dicons.com/tag/career/">
+  
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+          <div class="navbar__inner">
+            <a href="/" class="navbar__logo">
+              <span class="navbar__logo-icon">🎨</span>Free3Dicons
+            </a>
+            <div class="navbar__search">
+              <span class="navbar__search-icon">🔍</span>
+              <input type="search" id="nav-search" placeholder="Search icons…" aria-label="Search icons">
+            </div>
+            <div class="navbar__links">
+              <a href="/category/">Categories</a>
+              <a href="/pack/">Packs</a>
+              <a href="/whats-new/">New</a>
+              <a href="/request/" class="nav-new">Request Icon</a>
+            </div>
+          </div>
+        </nav>
+  
+        <main id="main-content" style="padding:0 0 80px;">
+        <div class="container">
+          <div class="page-header">
+            <nav class="breadcrumb"><a href="/">Home</a><span class="breadcrumb__sep">›</span><span aria-current="page">career</span></nav>
+            <h1 class="page-header__title">Icons tagged "career"</h1>
+            <p class="page-header__desc">1 free 3D icons tagged with "career"</p>
+          </div>
+          <div id="icons-grid" class="icons-grid" role="list"></div>
+          <div class="load-more-wrap"><button id="load-more-btn" class="btn-load-more" style="display:none;">Load more</button></div>
+        </div></main>
+  
+        <footer class="footer" role="contentinfo">
+          <div class="container">
+            <div class="footer__grid">
+              <div class="footer__brand">
+                <div class="navbar__logo" style="justify-content:flex-start;">
+                  <span class="navbar__logo-icon">🎨</span>Free3Dicons
+                </div>
+                <p>Free high-quality 3D icons for designers and developers.</p>
+              </div>
+              <div class="footer__col"><h5>Browse</h5><ul>
+                <li><a href="/category/">All Categories</a></li>
+                <li><a href="/pack/">Icon Packs</a></li>
+                <li><a href="/whats-new/">What's New</a></li>
+              </ul></div>
+              <div class="footer__col"><h5>Resources</h5><ul>
+                <li><a href="/request/">Request an Icon</a></li>
+                <li><a href="/license/">License</a></li>
+              </ul></div>
+            </div>
+            <div class="footer__bottom">
+              <span>© 2026 Free3Dicons. All icons free to use.</span>
+            </div>
+          </div>
+        </footer>
+  <div id="f3d-toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
+  <script src="/js/main.js"></script>
+  
+        <script>
+        (async function(){
+          await F3D.loadIcons();
+          var tagName="career";
+          var results=F3D.state.allIcons.filter(function(i){ return Array.isArray(i.tags)&&i.tags.indexOf(tagName)>-1; });
+          var grid=document.getElementById("icons-grid"), loadMore=document.getElementById("load-more-btn");
+          var page=1, pageSize=48;
+          function render(append){
+            var start=append?(page-1)*pageSize:0, end=page*pageSize;
+            results.slice(start,end).forEach(function(icon){
+              var a=document.createElement("a"); a.href=icon.url; a.className="icon-card";
+              a.innerHTML="<img src=\""+icon.preview+"\" alt=\""+icon.title+"\" width=\"64\" height=\"64\" loading=\"lazy\" class=\"icon-card__img\"><span class=\"icon-card__name\">"+icon.title+"</span>";
+              grid.appendChild(a);
+            });
+            if(loadMore) loadMore.style.display=end<results.length?"inline-block":"none";
+          }
+          render(false);
+          if(loadMore) loadMore.addEventListener("click",function(){ page++; render(true); });
+        })();
+        </script>
+</body>
+</html>
